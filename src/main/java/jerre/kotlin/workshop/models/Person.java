@@ -2,64 +2,43 @@ package jerre.kotlin.workshop.models;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 public class Person implements Id {
 
     private Long id;
-
     private final LocalDate birthDate;
+    private String name;
+    private Address address;
 
-    private String firstName;
-
-    private String lastName;
-
-    private Set<Person> children;
-
-    public Person(Long id, LocalDate birthDate, String firstName, String lastName, Set<Person> children) {
+    public Person(Long id, LocalDate birthDate, String name, Address address) {
+        if (name == null || birthDate == null) {
+            throw new IllegalArgumentException("Can't instantiate Person, birthDate and name can't be null");
+        }
         this.id = id;
         this.birthDate = birthDate;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.children = children;
+        this.name = name;
+        this.address = address;
     }
 
-    public Person(LocalDate birthDate, String wholeName) {
-        this(null, birthDate,
-                wholeName.split(" ")[0],
-                wholeName.substring(wholeName.indexOf(" ") + 1),
-                new HashSet<>());
+    public Person(LocalDate birthDate, String name, Address address) {
+        this(null, birthDate, name, address);
+    }
+
+    public Person(LocalDate birthDate, String name) {
+        this(null, birthDate, name, null);
     }
 
     public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public Set<Person> getChildren() {
-        return children.stream().collect(Collectors.toSet());
-    }
-
-    public boolean addChild(Person person) {
-        return children.add(person);
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getAge() {
@@ -74,31 +53,8 @@ public class Person implements Id {
         this.id = id;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
-        return Objects.equals(id, person.id) &&
-                Objects.equals(birthDate, person.birthDate) &&
-                Objects.equals(firstName, person.firstName) &&
-                Objects.equals(lastName, person.lastName) &&
-                Objects.equals(children, person.children);
+    public Optional<Address> getAddress() {
+        return Optional.ofNullable(address);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, birthDate, firstName, lastName, children);
-    }
-
-    @Override
-    public String toString() {
-        return "Person{" +
-                "id=" + id +
-                ", birthDate=" + birthDate +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", children=" + children +
-                '}';
-    }
 }

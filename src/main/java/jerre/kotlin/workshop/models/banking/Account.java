@@ -42,4 +42,10 @@ public abstract class Account implements Id {
     public int hashCode() {
         return Objects.hash(balance, id);
     }
+
+    public Account deposit(BigDecimal amount) {
+        return copy(balance.add(amount));
+    }
+
+    public abstract Account copy(BigDecimal newAmount);
 }

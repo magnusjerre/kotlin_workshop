@@ -4,25 +4,13 @@ import java.math.BigDecimal;
 
 public class SavingsAccount extends Account {
 
-    private BigDecimal maxSingleDeposit;
-
     public SavingsAccount(Long id, BigDecimal initialAmount) {
         super(id, initialAmount);
     }
 
-    public void setMaxSingleDeposit(BigDecimal amount) {
-        this.maxSingleDeposit = amount;
-    }
-
-    public BigDecimal deposit(BigDecimal amount) {
-        if (amount.compareTo(BigDecimal.ZERO) < 0) throw new IllegalArgumentException("Must deposit a positive amount, you tired to deposit " + amount + " kr");
-
-        return this.balance = this.balance.add(amount);
-    }
-
-    public BigDecimal withdraw(BigDecimal amount) {
-        if (amount.compareTo(BigDecimal.ZERO) < 0) throw new IllegalArgumentException("Must deposit a positive amount, you tired to deposit " + amount + " kr");
-        return balance = this.balance.subtract(amount);
+    @Override
+    public SavingsAccount copy(BigDecimal newAmount) {
+        return new SavingsAccount(id, newAmount);
     }
 
 }
