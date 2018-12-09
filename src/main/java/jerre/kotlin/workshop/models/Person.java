@@ -39,7 +39,9 @@ public class Person implements Id {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if (name != null) {
+            this.name = name.toLowerCase();
+        }
     }
 
     public int getAge() {

@@ -4,38 +4,32 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class Address {
-    private String street;
-    private String postalCode;
-    private String postalArea;
+    private String streetName;
+    private Integer streetNumber;
 
-    public Address(String street, String postalCode, String postalArea) {
-        this.street = street;
-        this.postalCode = postalCode;
-        this.postalArea = postalArea;
+    public Address(String streetName, Integer streetNumber) {
+        this.streetName = streetName;
+        this.streetNumber = streetNumber;
     }
 
-    public String getStreet() {
-        return street;
+    public Address(String streetName) {
+        this(streetName, null);
     }
 
-    public Optional<String> getPostalCode() {
-        return Optional.ofNullable(postalCode);
+    public String getStreetName() {
+        return streetName;
     }
 
-    public Optional<String> getPostalArea() {
-        return Optional.ofNullable(postalArea);
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
+    public Optional<Integer> getStreetNumber() {
+        return Optional.ofNullable(streetNumber);
     }
 
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
-    public void setPostalArea(String postalArea) {
-        this.postalArea = postalArea;
+    public void setStreetNumber(Integer streetNumber) {
+        this.streetNumber = streetNumber;
     }
 
     @Override
@@ -43,30 +37,26 @@ public class Address {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Address address = (Address) o;
-        return Objects.equals(street, address.street) &&
-                Objects.equals(postalCode, address.postalCode) &&
-                Objects.equals(postalArea, address.postalArea);
+        return Objects.equals(streetName, address.streetName) &&
+                Objects.equals(streetNumber, address.streetNumber);
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(street, postalCode, postalArea);
+        return Objects.hash(streetName, streetNumber);
     }
 
     @Override
     public String toString() {
         return "Address{" +
-                "street='" + street + '\'' +
-                ", postalCode='" + postalCode + '\'' +
-                ", postalArea='" + postalArea + '\'' +
+                "streetName='" + streetName + '\'' +
+                ", streetNumber=" + streetNumber +
                 '}';
     }
 
     public String pretty() {
-        String prettyStreet = street == null ? "Unknown street" : street;
-        String prettyPostalCode = postalCode == null ? "Unknown postal code" : postalCode;
-        String prettyPostalArea = postalArea == null ? "Unknown postal area" : postalArea;
-        return String.format("%s, %s %s", prettyStreet, prettyPostalCode, prettyPostalArea);
+        String prettyStreet = streetName == null ? "Unknown streetName" : streetName;
+        String prettyStreetNumber = this.streetNumber == null ? "" : this.streetNumber.toString();
+        return String.format("%s %s", prettyStreet, prettyStreetNumber);
     }
 }

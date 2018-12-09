@@ -22,7 +22,7 @@ import static org.junit.Assert.assertTrue;
 public class BankingServiceTest {
 
     private BankingService bankingService;
-    private Person person = new Person(1L, LocalDate.of(2000, 1, 1), "Yo Lo", new Address("Gata 1", "1234", "Stedet"));
+    private Person person = new Person(1L, LocalDate.of(2000, 1, 1), "Yo Lo", new Address("Gata",  1));
 
     @Before
     public void setup() {
@@ -45,7 +45,7 @@ public class BankingServiceTest {
         String expected = "---- Customer 1, start ----\n" +
                 "Name: Yo Lo\n" +
                 "Birthdate: 2000-01-01, 18 years old\n" +
-                "Address: Gata 1, 1234 Stedet\n" +
+                "Address: Gata 1\n" +
                 "Accounts:\n" +
                 "\tSavingsAccount, balance is 0 kr\n" +
                 "\tSavingsAccount, balance is 0 kr\n" +
