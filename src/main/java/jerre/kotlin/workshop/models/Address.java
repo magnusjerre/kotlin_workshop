@@ -4,8 +4,8 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class Address {
-    private String streetName;
-    private Integer streetNumber;
+    private final String streetName;
+    private final Integer streetNumber;
 
     public Address(String streetName, Integer streetNumber) {
         this.streetName = streetName;
@@ -20,16 +20,8 @@ public class Address {
         return streetName;
     }
 
-    public void setStreetName(String streetName) {
-        this.streetName = streetName;
-    }
-
     public Optional<Integer> getStreetNumber() {
         return Optional.ofNullable(streetNumber);
-    }
-
-    public void setStreetNumber(Integer streetNumber) {
-        this.streetNumber = streetNumber;
     }
 
     @Override
