@@ -75,7 +75,7 @@ class AddressMindreJalla(val streetName: String, val streetNumber: Int? = null) 
     }
 }
 
-data class Address(val streetName: String, val streetNumber: Int? = null) {
+data class Address @JvmOverloads constructor(val streetName: String, val streetNumber: Int? = null) {
     fun pretty(): String = "$streetName ${streetNumber ?: ""}"
 }
 

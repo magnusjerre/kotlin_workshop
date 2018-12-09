@@ -1,5 +1,7 @@
 package jerre.kotlin.workshop.models;
 
+import jerre.models.Address;
+
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Objects;
@@ -79,7 +81,7 @@ public class Person implements Id {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "PersonNaiv1{" +
                 "id=" + id +
                 ", birthDate=" + birthDate +
                 ", name='" + name + '\'' +

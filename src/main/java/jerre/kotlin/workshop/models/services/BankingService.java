@@ -1,6 +1,5 @@
 package jerre.kotlin.workshop.models.services;
 
-import jerre.kotlin.workshop.models.Address;
 import jerre.kotlin.workshop.models.Person;
 import jerre.kotlin.workshop.models.banking.Account;
 import jerre.kotlin.workshop.models.banking.AccountModificationResult;
@@ -8,6 +7,7 @@ import jerre.kotlin.workshop.models.banking.AccountType;
 import jerre.kotlin.workshop.models.banking.ExpenditureAccount;
 import jerre.kotlin.workshop.models.banking.LoanAccount;
 import jerre.kotlin.workshop.models.banking.SavingsAccount;
+import jerre.models.Address;
 
 import java.math.BigDecimal;
 import java.util.Collection;

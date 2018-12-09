@@ -1,12 +1,12 @@
 package jerre.kotlin.workshop.services;
 
-import jerre.kotlin.workshop.models.Address;
 import jerre.kotlin.workshop.models.BankingUtils;
 import jerre.kotlin.workshop.models.Person;
 import jerre.kotlin.workshop.models.banking.Account;
 import jerre.kotlin.workshop.models.banking.AccountType;
 import jerre.kotlin.workshop.models.services.BankingService;
 import jerre.kotlin.workshop.testingmodels.Roughly;
+import jerre.models.Address;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,7 +22,7 @@ import static org.junit.Assert.assertTrue;
 public class BankingServiceTest {
 
     private BankingService bankingService;
-    private Person person = new Person(1L, LocalDate.of(2000, 1, 1), "Yo Lo", new Address("Gata",  1));
+    private Person person = new Person(1L, LocalDate.of(2000, 1, 1), "Yo Lo", new Address("Gata"));
 
     @Before
     public void setup() {
@@ -45,7 +45,7 @@ public class BankingServiceTest {
         String expected = "---- Customer 1, start ----\n" +
                 "Name: Yo Lo\n" +
                 "Birthdate: 2000-01-01, 18 years old\n" +
-                "Address: Gata 1\n" +
+                "Address: Gata \n" +
                 "Accounts:\n" +
                 "\tSavingsAccount, balance is 0 kr\n" +
                 "\tSavingsAccount, balance is 0 kr\n" +
