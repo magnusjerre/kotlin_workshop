@@ -1,0 +1,4 @@
+linje nummer 1
+linje nummer 2
+linje nummer 3
+linje nummer 4
